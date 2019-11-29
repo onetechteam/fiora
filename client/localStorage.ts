@@ -39,7 +39,8 @@ function getSwitchValue(key: string, defaultValue: boolean = true) {
  * 获取LocalStorage值
  */
 export default function getData() {
-    const theme = getTextValue(LocalStorageKey.Theme, '');
+    const defaultTheme = 'cool';
+    const theme = getTextValue(LocalStorageKey.Theme, defaultTheme);
     let themeConfig = {
         primaryColor: '',
         primaryTextColor: '',
@@ -52,15 +53,15 @@ export default function getData() {
         themeConfig = {
             primaryColor: getTextValue(
                 LocalStorageKey.PrimaryColor,
-                config.theme.default.primaryColor,
+                config.theme[defaultTheme].primaryColor,
             ),
             primaryTextColor: getTextValue(
                 LocalStorageKey.PrimaryTextColor,
-                config.theme.default.primaryTextColor,
+                config.theme[defaultTheme].primaryTextColor,
             ),
             backgroundImage: getTextValue(
                 LocalStorageKey.BackgroundImage,
-                config.theme.default.backgroundImage,
+                config.theme[defaultTheme].backgroundImage,
             ),
             aero: getSwitchValue(
                 LocalStorageKey.Aero,
